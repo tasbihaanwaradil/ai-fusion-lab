@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/select"
 import { Switch } from "@/components/ui/switch"
 
+
 const AiMultiModels = () => {
     const [aiModelList, setAiModelList] = useState(AiModelList);
     return (
@@ -42,7 +43,11 @@ const AiMultiModels = () => {
                         </div>
                     </div>
                 </div>
+
             ))}
+            <div>
+                <Switch />
+            </div>
         </div>
         
     )
