@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Sun, Moon } from "lucide-react";
+import { Sun, Moon, User2, Zap } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import {
@@ -11,9 +11,12 @@ import {
   SidebarGroup,
   SidebarHeader,
 } from "@/components/ui/sidebar";
+import { SignIn, SignInButton, useUser } from "@clerk/nextjs";
+import UsageCreditProgress from "./UsageCreditProgress";
 
 export function AppSidebar() {
   const { theme, setTheme } = useTheme();
+  const { user } = useUser();
 
   return (
     <Sidebar>
@@ -75,7 +78,18 @@ export function AppSidebar() {
 
       <SidebarFooter>
         <div className="p-3 mb-10">
-          <Button className="w-full" size='lg'>Sign In/Sign Up</Button>
+          {!user ? <SignInButton mode="modal">
+            <Button className="w-full" size='lg'>Sign In/Sign Up</Button>
+          </SignInButton>
+            :
+            <div>
+              <UsageCreditProgress />
+              <Button className="w-full mb-3"><Zap /> Upgrade Plan</Button>
+              <Button className="flex w-full" variant={'ghost'}>
+                <User2 /> <h2>Setting</h2>
+              </Button>
+            </div>
+          }
         </div>
       </SidebarFooter>
     </Sidebar>
