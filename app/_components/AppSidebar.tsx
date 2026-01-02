@@ -58,8 +58,19 @@ export function AppSidebar() {
           </div>
 
           <div className="mt-10">
-            <Button className="mt-7 w-full" size='lg'>+ New Chat</Button>
+            {user ? (
+              <Button className="mt-7 w-full" size="lg">
+                + New Chat
+              </Button>
+            ) : (
+              <SignInButton mode="modal">
+                <Button className="mt-7 w-full" size="lg">
+                  + New Chat
+                </Button>
+              </SignInButton>
+            )}
           </div>
+
         </div>
       </SidebarHeader>
 
@@ -67,7 +78,7 @@ export function AppSidebar() {
         <SidebarGroup>
           <div className='p-3'>
             <h2 className="font-bold text-lg">Chat</h2>
-            <p className="text-sm text-muted-foreground">Sign in to start chatting with multiple AI Models</p>
+            {!user&& <p className="text-sm text-muted-foreground">Sign in to start chatting with multiple AI Models</p>}
           </div>
         </SidebarGroup>
 
