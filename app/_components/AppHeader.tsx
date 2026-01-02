@@ -11,8 +11,7 @@ const AppHeader = () => {
       {/* Spacer */}
       <div className="flex-1" />
 
-      {/* Right */}
-      <Button>Sign In</Button>
+      
     </header>
   );
 };
